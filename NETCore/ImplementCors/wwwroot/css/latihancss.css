@@ -1,0 +1,114 @@
+﻿h1{
+    margin : auto;
+    text-align : center;
+    position : relative;
+    height : 500px;
+    width : 52%;
+    font-size : 60px;
+}
+
+#container{
+    width : 50%;
+    height : 400px;
+    position : absolute; 
+    margin : auto;
+    top : 80px;
+    right : 475px;
+    display : inline-block;
+    border-style : solid;
+    border-width : 2px 2px;
+    font-size : 25px;
+}
+
+#container .p1 {
+    width : 95%;
+    border : 2px solid; 
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left : 20px;
+}
+
+#a a {
+    position: relative;
+    margin-right: 0px;
+    /*left : 450px;*/
+    margin-top: 5px;
+    background-color: green;
+}
+
+#a a:focus{
+    position: relative;
+    margin-right: 0px;
+    /*left : 450px;*/
+    margin-top: 5px;
+    background-color : yellow;
+}
+
+#container .p2 {
+    width: 95%;
+    border: 2px solid;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left : 20px;
+}
+
+#container .p3 {
+    width: 95%;
+    border: 2px solid;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+#b {
+    width: 95%;
+    border: 2px solid #00ff21;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+#a {
+    width: 95%;
+    height : 50%;
+    border: 2px solid #0094ff;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+#a::after{
+    width: 95%;
+    height: 50%;
+    border: 2px solid #ff0000;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+ul li:nth-child(3)
+{
+    background-color : aquamarine;
+}
+
+#validationCustom05
+{
+    height: 400px;
+}

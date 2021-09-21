@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml"; }
+<div class="container mt-8">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <p class="h1 col-12">Charts</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Gender</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Salary</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chartuniv">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!--<div class="col-4">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Univ</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chartkampus">
+                    </div>
+                </div>-->
+                <!-- /.card-body -->
+            <!--</div>
+        </div>-->
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/client.js" asp-append-version="true"></script>
+}

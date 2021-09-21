@@ -1,0 +1,219 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml"; }
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <p class="h1 col-8">Data Person</p>
+                <div class="col-4">
+                    <button data-toggle="modal"
+                            data-target="#registerModal"
+                            class="btn btn-primary float-right">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="tableClient" class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIK</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyClient">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*MODAL UNTUK JS Detail*@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Client Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="bodyModal">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*MODAL UNTUK JS Register*@
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="bodyRegisterModal">
+
+                <form id="formRegister" name="formregis">
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputNIK">NIK</label>
+                            <input type="text" name="NIK" class="form-control" id="inputNIK" placeholder="NIK" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputFirstName">First name</label>
+                            <input type="text" name="FName" class="form-control" id="inputFirstName" placeholder="First name" required>
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="inputLastName">Last name</label>
+                            <input type="text" name="LName" class="form-control" id="inputLastName" placeholder="Last name" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputPhone">Phone</label>
+                            <input type="text" name="Phone" class="form-control" id="inputPhone" placeholder="Phone" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputBirthDate">Birth Date</label>
+                            <input type="datetime" name="BDate" class="form-control" id="inputBirthDate" placeholder="Birth Date" value="1997-07-20" required>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-8">
+                            <label for="inputGender">Choose your Gender:</label>
+                            <select id="inputGender" name="inputGenderName" class="form-control">
+                                <option value="0">Male</option>
+                                <option value="1">Female</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputSalary">Salary</label>
+                            <input type="number" name="salary" class="form-control" id="inputSalary" placeholder="Salary" required>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputEmail">Email</label>
+                            <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Email" required>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputPassword">Password</label>
+                            <input type="text" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-4">
+                            <label for="inputDegree">Degree</label>
+                            <input type="text" name="degree" class="form-control" id="inputDegree" placeholder="Degree" required>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="inputGPA">Gpa</label>
+                            <input type="text" name="gpa" class="form-control" id="inputGPA" placeholder="Gpa" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputUniversity">Universities</label>
+                            <select id="inputUniversity" name="inputUniversityName" class="form-control">
+                                <option value=""></option>
+
+
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    @*<div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationServer04">City</label>
+                                <input type="text" class="form-control" id="validationServer04" placeholder="City" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationServer05">State</label>
+                                <input type="text" class="form-control" id="validationServer05" placeholder="State" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationServer06">Zip</label>
+                                <input type="text" class="form-control" id="validationServer06" placeholder="Zip" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
+                        </div>*@
+
+                    @*<div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                                <label class="form-check-label" for="invalidCheck3">
+                                    Agree to terms and conditions
+                                </label>
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>*@
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="registerBtn" type="button" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/client.js" asp-append-version="true"></script>
+}

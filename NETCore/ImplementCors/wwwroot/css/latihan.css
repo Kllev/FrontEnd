@@ -1,0 +1,103 @@
+﻿/*::selection {
+    color: yellow;
+    background-color: black;
+}
+h1 {
+    text-align: center;
+    border: 2px solid grey;
+    width: auto;
+    margin: 20px 30px 20px 30px; 
+}
+    h1::before {
+        content: "⭐️";
+    }
+    h1::after {
+        content: "༼ つ ◕_◕ ༽つ";
+    }
+div {
+    border: 2px solid grey;
+}
+div #container {
+    margin : 20px 30px 20px 30px;
+    border : 2px solid grey;
+}
+
+section#a {
+    margin : 20px 30px 20px 30px;
+    border: 2px solid blue;
+}
+
+p {
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 20px;
+    margin: 20px 30px 20px 30px;
+    width: auto;
+    height: 50px;
+    border: 2px solid grey;
+}
+.p1:hover {
+
+    background-color: brown;
+    color: white;
+}
+.p2:hover {
+    
+    background-color: darkcyan;
+    color: white;
+}
+.p2::after {
+    content: "̿̿ ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿";
+}
+
+.p3:hover{
+    background-color: coral;
+    color: white;
+}
+
+a {
+    text-align: center;
+    width: auto;
+    display: block; 
+}
+
+a:hover {
+    color:cadetblue;
+}
+
+a:active {
+    color: grey;
+}
+
+::marker {
+    color: red;
+    font-size: 23px;
+}
+section#b {
+    margin: 20px 30px 20px 30px;
+    border: 2px solid coral;
+}
+
+p#a:hover {
+    
+    background-color: darkseagreen;
+    color: white;
+}
+p#a::first-letter {
+    color : red;
+    font-size: x-large;
+}
+
+ul{
+    margin: 20px 30px 20px 30px;
+    border: 2px solid grey;
+}
+
+li {
+    margin: 20px 30px 20px 30px;
+    border: 2px solid grey;
+}
+
+ul li:nth-child(2) {
+    background-color: cornflowerblue;
+}*/
