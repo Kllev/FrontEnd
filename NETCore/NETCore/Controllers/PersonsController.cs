@@ -69,12 +69,7 @@ namespace NETCore.Controllers
             } catch { 
             
             }
-            return Ok(new
-            {
-                status = HttpStatusCode.OK,
-                result = repository.Get(register.NIK),
-                message = "Data Berhasil Di tambah"
-            });
+            return Ok(repository.Get(register.NIK));
         }
 
         [EnableCors("AllowAllOrigins")]
@@ -84,18 +79,14 @@ namespace NETCore.Controllers
             var get = repository.GetAllProfile();
             if (get != null)
             {
-                return Ok(new
-                {
-                    status = HttpStatusCode.OK,
-                    data = repository.Get(),
-                    message = "Data berhasil Di tampilkan"
-                });
+                return Ok(repository.Get());
             }
             
                 return NotFound("Tidak ada Data");
             
         }
 
+        [EnableCors("AllowAllOrigins")]
         [HttpGet("GetById/{nik}")]
         public ActionResult GetById(string nik)
         {

@@ -121,7 +121,7 @@ using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
                 var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Audience"], claim, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
 
-                return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                return Ok(new JWTokenVM { Token = new JwtSecurityTokenHandler().WriteToken(token), Messages = "Login Berhasil" });
                 //return Ok(new
                 //{
                 //    status = HttpStatusCode.OK,

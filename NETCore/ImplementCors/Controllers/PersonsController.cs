@@ -3,6 +3,7 @@ using ImplementCors.Repositories.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.Models;
+using NETCore.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace ImplementCors.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("[controller]")]
     public class PersonsController : BaseController<Person, PersonRepository, string>
     {
         PersonRepository personRepository;
@@ -25,17 +25,24 @@ namespace ImplementCors.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("GetAllData")]
         public async Task<JsonResult> GetAllData()
         {
             var result = await personRepository.GetAllProfile();
             return Json(result);
         }
 
-        [HttpGet]
+        [HttpGet("GetById/{nik}")]
         public async Task<JsonResult> GetById(string nik)
         {
             var result = await personRepository.GetById(nik);
+            return Json(result);
+        }
+
+        [HttpPost("RegisterData/")]
+        public JsonResult RegisterData([FromBody]RegisterVM register)
+        {
+            var result = personRepository.Register(register);
             return Json(result);
         }
     }

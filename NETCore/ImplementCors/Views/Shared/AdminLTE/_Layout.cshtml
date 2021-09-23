@@ -16,7 +16,7 @@
 
     @*<link rel="stylesheet" href="~/css/latihan.css" />*@
 </head>
-<body>
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
@@ -32,6 +32,44 @@
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            @{ var iden = User.Identity.IsAuthenticated; }
+            @if (iden)
+            {
+                <div class="navbar-nav ml-auto">
+                    <a class="btn btn-danger" asp-controller="Login" asp-action="Logout">Sign Out</a>
+                </div>
+
+            }
+            else
+            {
+                <div class="navbar-nav ml-auto">
+                    <a class="btn btn-light" href="https://localhost:44381/login">Login</a>
+                </div>
+            }
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->

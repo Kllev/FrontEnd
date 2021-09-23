@@ -17,7 +17,7 @@ namespace ImplementCors.Repositories
     {
         private readonly Address address;
         private readonly string request;
-        private readonly IHttpContextAccessor _contextAccessor;
+        //private readonly IHttpContextAccessor contextAccessor;
         private readonly HttpClient httpClient;
 
         public GeneralRepository(Address address, string request)
@@ -25,10 +25,10 @@ namespace ImplementCors.Repositories
             this.address = address;
             this.request = request;
             //_contextAccessor = new HttpContextAccessor();
-            //httpClient = new HttpClient
-            //{
-            //    BaseAddress = new Uri(address.link)
-            //};
+            httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(address.link)
+            };
             //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", _contextAccessor.HttpContext.Session.GetString("JWToken"));
         }
 

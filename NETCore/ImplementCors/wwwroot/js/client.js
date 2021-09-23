@@ -1,5 +1,5 @@
 ﻿$.ajax({
-    url: "https://localhost:44316/api/Persons/GetAllProfile"
+    url: "/persons/getalldata"
 }).done(result => {
     console.log(result);
 });
@@ -27,9 +27,9 @@ $(document).ready(function () {
         ],
         "filter": true,
         "ajax": {
-            "url": "https://localhost:44316/api/Persons/GetAllProfile",
+            "url": "/persons/getalldata",
             "datatype": "json",
-            "dataSrc": "data"
+            "dataSrc": ""
         },
         "columns": [
             {
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 "data": null,
                 "render": function (data, type, row) {
 
-                    return row["firstName"] + row["lastName"];
+                    return row["firstName"] + " " + row["lastName"];
                 },
                 "autoWidth": true
             },
@@ -85,8 +85,9 @@ $(document).ready(function () {
 
 function detail(nik) {
     $.ajax({
-        url: `https://localhost:44316/api/Persons/GetById/${nik}`
+        url: `/persons/GetById/${nik}`
     }).done((result) => {
+        console.log(result)
         text = ` <table class="table table-bordered">
                 <tbody>
                     <tr>
@@ -97,9 +98,6 @@ function detail(nik) {
                     </tr>
                     <tr>
                         <td><b>Gender :</b> ${result.gender}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Phone Number :</b> ${result.phone.startsWith('0') ? '+62' + result.phone.substr(1) : '+62' + result.phone}</td>
                     </tr>
                    
                     <tr>
@@ -113,6 +111,9 @@ function detail(nik) {
                     </tr>
                     <tr>
                         <td><b>Birth Date : </b> ${result.birthDate}</td>
+                    </tr>
+                    <tr>
+                        <td><b>University Id : </b> ${result.universityId}</td>
                     </tr>
                 </tbody>
             </table>
@@ -144,31 +145,30 @@ $("#registerBtn").click(function (event) {
     obj.NIK = $('#inputNIK').val();
     obj.FirstName = $("#inputFirstName").val();
     obj.LastName = $("#inputLastName").val();
-    obj.Phone = parseInt($("#inputPhone").val());
-    obj.Birthdate = $("#inputBirthDate").val();
+    obj.Phone = $("#inputPhone").val();
+    obj.BirthDate = $("#inputBirthDate").val();
     obj.gender = parseInt($("#inputGender").val());
     obj.Salary = parseInt($("#inputSalary").val());
     obj.Email = $("#inputEmail").val();
     obj.Password = $("#inputPassword").val();
     obj.Degree = $("#inputDegree").val();
     obj.GPA = $("#inputGPA").val();
-    obj.UniversityId = parseInt($("#inputUniversityName").val());
     console.log(obj);
 
     $.ajax({
-            url: "https://localhost:44316/api/persons/register",
+        /*url: "https://localhost:44316/api/persons/register",*/
+            url: "/Persons/RegisterData/",
             type: "POST",
             dataType: 'json',
-            contentType: 'application/json',
-            crossDomain: true,
-            data: JSON.stringify(obj),
-        }).done((result) => {
-            $('#tableClient').DataTable().ajax.reload();
+        contentType: 'application/json; charset-utf-8',
+        data: JSON.stringify(obj)
+    }).done((result) => {
             Swal.fire({
                 title: 'Success!',
                 text: 'You Have Been Registered',
                 icon: 'success',
             })
+            $('#tableClient').DataTable().ajax.reload();
         }).fail((result) => {
             Swal.fire({
                 title: 'Error!',
@@ -215,7 +215,6 @@ function deleted(nik) {
             });
         }
     })
-
 }
 
 $(document).ready(function () {
@@ -224,8 +223,8 @@ $(document).ready(function () {
         type: "GET"
     }).done((result) => {
         console.log(result);
-        var female = result.data.filter(data => data.gender === 1).length;
-        var male = result.data.filter(data => data.gender === 0).length;
+        var female = result.filter(data => data.gender === 1).length;
+        var male = result.filter(data => data.gender === 0).length;
         console.log(male);
         var options = {
             series: [male, female],
@@ -244,6 +243,7 @@ $(document).ready(function () {
                 }
             }]
         };
+
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     }).fail((error) => {
@@ -262,123 +262,91 @@ $(document).ready(function () {
         type: "GET"
     }).done((result) => {
         console.log(result);
-        var gede = result.data.filter(data => data.salary > 1000000).length;
-        var kecil = result.data.filter(data => data.salary < 1000000).length;
+        var gede = result.filter(data => data.salary > 1000000).length;
+        var kecil = result.filter(data => data.salary < 1000000).length;
         console.log(gede);
-        var options = {
-            series: [gede, kecil],
-            chart: {
-                width: 380,
-                type: 'pie',
-            },
-            labels: ['> 1000000', '< 1000000'],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chartuniv"), options);
-        chart.render();
-    }).fail((error) => {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Data Cannot Deleted',
-            icon: 'Error',
-            confirmButtonText: 'Next'
-        })
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({
-        url: `https://localhost:44316/api/Persons/GetAllProfile`,
-        type: "GET"
-    }).done((result) => {
-        console.log(result);
-        var tarumanagara = result.data.filter(data => data.universityid === 1).length;
-        var ciputra = result.data.filter(data => data.universityid === 5).length;
-        console.log(tarumanagara);
-        var options = {
-            series: [{
-                name: 'Inflation',
-                data: [tarumanagara, ciputra]
-            }],
-            chart: {
-                height: 350,
-                type: 'bar',
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 10,
-                    dataLabels: {
-                        position: 'top', // top, center, bottom
-                    },
-                }
-            },
-            dataLabels: {
-                enabled: true,
-                formatter: function (val) {
-                    return val;
+            var options = {
+                series: [{
+                    name: 'Inflation',
+                    data: [gede, kecil]
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
                 },
-                offsetY: -20,
-                style: {
-                    fontSize: '12px',
-                    colors: ["#304758"]
-                }
-            },
-
-            xaxis: {
-                categories: ["Tarumanagara", "Ciputra"],
-                position: 'top',
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                },
-                crosshairs: {
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            colorFrom: '#D8E3F0',
-                            colorTo: '#BED1E6',
-                            stops: [0, 100],
-                            opacityFrom: 0.4,
-                            opacityTo: 0.5,
-                        }
+                plotOptions: {
+                    bar: {
+                        borderRadius: 10,
+                        dataLabels: {
+                            position: 'top', // top, center, bottom
+                        },
                     }
                 },
-                tooltip: {
+                dataLabels: {
                     enabled: true,
-                }
-            },
-            yaxis: {
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false,
-                },
-                labels: {
-                    show: false,
                     formatter: function (val) {
                         return val;
+                    },
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
+
+                xaxis: {
+                    categories: ["Gaji Gede", "Gaji Kecil"],
+                    position: 'top',
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false
+                    },
+                    crosshairs: {
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                colorFrom: '#D8E3F0',
+                                colorTo: '#BED1E6',
+                                stops: [0, 100],
+                                opacityFrom: 0.4,
+                                opacityTo: 0.5,
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+
+                },
+                title: {
+                    text: 'Monthly Inflation in Argentina, 2002',
+                    floating: true,
+                    offsetY: 330,
+                    align: 'center',
+                    style: {
+                        color: '#444'
                     }
                 }
+            };
 
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chartkampus"), options);
-        chart.render();
+            var chart = new ApexCharts(document.querySelector("#chartuniv"), options);
+            chart.render();
     }).fail((error) => {
         Swal.fire({
             title: 'Error!',

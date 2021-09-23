@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Data\" />
+    <ProjectReference Include="..\NETCore\NETCore.csproj" />
   </ItemGroup>
 
 </Project>

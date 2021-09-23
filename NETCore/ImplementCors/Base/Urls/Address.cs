@@ -7,8 +7,7 @@ namespace ImplementCors.Base.Urls
 {
     public class Address
     {
-        public string link = "localhost:44316/api/";
-        //localhost/api/blablabla
+        public string link = "https://localhost:44316/API/";
     }
 }
 

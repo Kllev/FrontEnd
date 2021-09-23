@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace ImplementCors.Base.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class BaseController<TEntity, TRepository, TId> : Controller
         where TEntity : class
         where TRepository : IRepository<TEntity, TId>

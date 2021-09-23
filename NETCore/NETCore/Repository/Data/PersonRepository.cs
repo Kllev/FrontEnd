@@ -157,7 +157,7 @@ namespace NETCore.Repository.Data
                            Password = a.Password,
                            Degree = e.Degree,
                            GPA = e.GPA
-                       }).ToList();
+                       });
             return all.FirstOrDefault(p => p.NIK == nik);
         }
     }

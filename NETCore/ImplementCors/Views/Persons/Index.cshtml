@@ -1,6 +1,8 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@{
+}
 @{ Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml"; }
 <div class="container mt-4">
     <div class="card">
@@ -14,6 +16,7 @@
                         Register
                     </button>
                 </div>
+
             </div>
         </div>
         <div class="card-body">
@@ -69,25 +72,34 @@
             </div>
             <div class="modal-body" id="bodyRegisterModal">
 
-                <form id="formRegister" name="formregis">
+                <form id="formRegister">
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputNIK">NIK</label>
-                            <input type="text" name="NIK" class="form-control" id="inputNIK" placeholder="NIK" required>
-
+                            <input type="text" class="form-control" id="inputNIK" placeholder="NIK" required>
+                            <div class="valid-feedback">NIK valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgNIK"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="inputFirstName">First name</label>
-                            <input type="text" name="FName" class="form-control" id="inputFirstName" placeholder="First name" required>
-
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required>
+                            <div class="valid-feedback">First Name valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgFirstName"></span>
+                            </div>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="inputLastName">Last name</label>
-                            <input type="text" name="LName" class="form-control" id="inputLastName" placeholder="Last name" required>
-
+                            <input type="text" class="form-control" id="inputLastName" placeholder="Last name" required>
+                            <div class="valid-feedback">Last Name valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgLastName"></span>
+                            </div>
                         </div>
 
                     </div>
@@ -95,65 +107,105 @@
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputPhone">Phone</label>
-                            <input type="text" name="Phone" class="form-control" id="inputPhone" placeholder="Phone" required>
-
+                            <input type="text" class="form-control" id="inputPhone" placeholder="Phone" required>
+                            <div class="valid-feedback">Phone Number valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgPhone"></span>
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputBirthDate">Birth Date</label>
-                            <input type="datetime" name="BDate" class="form-control" id="inputBirthDate" placeholder="Birth Date" value="1997-07-20" required>
-
+                            <input type="datetime" class="form-control" id="inputBirthDate" placeholder="Birth Date" value="1997-07-20" required>
+                            <div class="valid-feedback">Birth Date valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgBirthDate"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-8">
                             <label for="inputGender">Choose your Gender:</label>
-                            <select id="inputGender" name="inputGenderName" class="form-control">
+                            <select id="inputGender" name="inputGenderName" class="form-control" required>
                                 <option value="0">Male</option>
                                 <option value="1">Female</option>
 
                             </select>
+                            <div class="valid-feedback">Gender valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgGender"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputSalary">Salary</label>
-                            <input type="number" name="salary" class="form-control" id="inputSalary" placeholder="Salary" required>
-
+                            <input type="number" class="form-control" id="inputSalary" placeholder="Salary" required>
+                            <div class="valid-feedback">Salary valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgSalary"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputEmail">Email</label>
-                            <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Email" required>
-
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required>
+                            <div class="valid-feedback">Email valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgEmail"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-8">
                             <label for="inputPassword">Password</label>
-                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
-
+                            <input type="text" class="form-control" id="inputPassword" placeholder="Password" required>
+                            <div class="valid-feedback">Password valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgPassword"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-4">
                             <label for="inputDegree">Degree</label>
-                            <input type="text" name="degree" class="form-control" id="inputDegree" placeholder="Degree" required>
-
+                            <input type="text" class="form-control" id="inputDegree" placeholder="Degree" required>
+                            <div class="valid-feedback">Degree valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgDegree"></span>
+                            </div>
                         </div>
 
                         <div class="col-4">
                             <label for="inputGPA">Gpa</label>
-                            <input type="text" name="gpa" class="form-control" id="inputGPA" placeholder="Gpa" required>
-
+                            <input type="text" class="form-control" id="inputGPA" placeholder="Gpa" required>
+                            <div class="valid-feedback">GPA valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgGPA"></span>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-8">
+                            <label for="inputUniversity">Universities</label>
+                            <select id="inputUniversity" name="inputUniversityName" class="form-control" required>
+                                <option value=""></option>
+                            </select>
+                            <div class="valid-feedback">University valid</div>
+                            <div class="invalid-feedback">
+                                <span id="msgUniversity"></span>
+                            </div>
+                        </div>
+
                     </div>
 
 
